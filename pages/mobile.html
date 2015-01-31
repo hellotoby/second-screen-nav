@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Navigation &ndash; Second Screen</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/css/common.css" />
+    
+    </head>
+
+    <body>
+
+        <ul>
+            <li><a href="/" class="home">Home</a></li>
+            <li><a href="/page/one" class="one">One</a></li>
+            <li><a href="/page/two" class="two">Two</a></li>
+            <li><a href="/page/three" class="three">Three</a></li>
+            <li><a href="/page/four" class="four">Four</a></li>
+        </ul>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+          var socket = io.connect('http://localhost:8000');
+          [].forEach.call( document.querySelectorAll( 'a' ), function ( a ) {
+            a.addEventListener( 'click', function (e) {
+                socket.emit('statechange', { url : e.target.href });
+                e.preventDefault();
+            }, false );
+          });          
+        </script>
+
+    </body>
+
+</html>
