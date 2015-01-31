@@ -28,7 +28,7 @@
         <script src="/socket.io/socket.io.js"></script>
         <script>
           // For local dev
-          var socket = io.connect('http://localhost:8000');
+          var socket = io.connect();
           [].forEach.call( document.querySelectorAll( 'a' ), function ( a ) {
             a.addEventListener( 'click', function (e) {
                 socket.emit('statechange', { url : e.target.href });
