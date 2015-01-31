@@ -1,9 +1,6 @@
 
 // Change page when we get a url sent from the second screen
-// For local dev
-// var socket = io.connect('http://localhost:8000');
-// Heroku only
-var socket = io.connect();
+var socket = io.connect('http://localhost:8000');
 socket.on('urlchange', function (data) {
     window.location.href = data.url;
 });

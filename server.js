@@ -29,12 +29,6 @@ app.get('/page/:id', function( req, res ) {
     res.sendFile(__dirname + '/pages/' + req.params.id + '.html');
 });
 
-// Heroku setting for long polling
-io.configure(function () { 
-    io.set("transports", ["xhr-polling"]); 
-    io.set("polling duration", 10); 
-});
-
 // Socket IO
 io.on('connection', function (socket) {
     // Create a room to broadcast to
